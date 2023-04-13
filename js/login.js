@@ -74,14 +74,23 @@ function login(event) {
     fetch('https://todo-api.ctd.academy/v1/users/login', requestConfig).then(    
         response => {
             if (response.ok) {
-                //console.log('Usuario existe');
                 response.json().then(
-                    data => {
-                        localStorage.setItem('userToken', data.jwt);
-                        window.location.href = './tarefas.html';
-                    }
+                    data => 
+                    Swal.fire(
+                        'Login Efetuado!',
+                        'Login realizado com sucesso!',
+                        'success'
+                      ).then(result => {
+                        if (result.isClosed) {
+                            localStorage.setItem('userToken', data.jwt);
+                            window.location.href = './tarefas.html';
+                        } else {
+                            localStorage.setItem('userToken', data.jwt);
+                            window.location.href = './tarefas.html';
+                        } 
+                      })
                 )
-
+            
             } else {
                 console.log('Nao existe');
             }

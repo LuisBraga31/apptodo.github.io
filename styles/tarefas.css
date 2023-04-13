@@ -111,7 +111,10 @@ a {
   border-radius: 50%;
   cursor: pointer;
   text-align: center;
-  color: grey;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */

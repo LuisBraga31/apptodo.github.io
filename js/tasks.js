@@ -200,7 +200,7 @@ function insertTasks(tasks) {
 
         tasksPendetesRef.innerHTML += `
         <li class="tarefa">
-            <div class="not-done"></div>
+            <div class="not-done"> X </div>
             <div class="descricao">
             <p class="nome"> ${tasksPendentes[i].description}</p>
             <p class="timestamp">Criada em: ${new Intl.DateTimeFormat('pt-BR').format(taskDate)}</p>
@@ -259,16 +259,33 @@ function deleteTask(target) {
         method: 'DELETE',
         headers: requestHeaders
     }
-
-    fetch(`https://todo-api.ctd.academy/v1/tasks/${target}`, requestConfig).then (
-        response => {
-            if(response.ok) {
-                getTasks();
-            }
+    
+    Swal.fire({
+        title: 'Tem certeza que deseja apagar essa tarefa?',
+        text: "Você não poderá voltar atrás!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'green',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, desejo remover!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`https://todo-api.ctd.academy/v1/tasks/${target}`, requestConfig).then (
+                response => {
+                    if(response.ok) {
+                        getTasks();
+                    }
+                }
+                
+            )
+            carregamento();
         }
-    )
+      })
 
-    carregamento();
+
+
+
 }
 
 function atualizar() {
