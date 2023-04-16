@@ -45,7 +45,7 @@ function validateInput(input) {
     }
     
     formsErrors[input.id] = !inputValidacao;
-    console.log(formsErrors);
+
     checkForm();
 
 }
@@ -94,7 +94,11 @@ function login(event) {
                 )
             
             } else {
-                console.log('Nao existe');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Usuário não encontrado...',
+                    text: 'Email ou senha não conferem!'
+                  })
             }
         }
     );
