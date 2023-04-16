@@ -34,11 +34,13 @@ function checkForm() {
 function validateInput(input) {
 
     const inputValidacao = input.checkValidity();
-    const elementFatherRef = input.parentElement;
+    const elementFatherRef = input.parentElement.parentElement;
 
     if(inputValidacao) {
         elementFatherRef.classList.remove('error');
+        elementFatherRef.classList.add('correct')
     } else {
+        elementFatherRef.classList.remove('correct');
         elementFatherRef.classList.add('error');
     }
     

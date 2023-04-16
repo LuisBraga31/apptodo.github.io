@@ -39,7 +39,6 @@ input {
   padding: .4em .5em;
   background-color: var(--app-grey);
   border: 1px solid var(--app-grey);
-  border-radius: .2em;
 }
 
 input:focus {
@@ -96,6 +95,23 @@ button.ativado {
   justify-content: center;
 }
 
+.form-input {
+  display: flex;
+  background-color: var(--app-grey);
+  border: 1px solid var(--app-grey);
+  border-radius: .2em;
+}
+
+.form-input span {
+  display: none;
+}
+
+.right form label.correct .form-input span {
+  color: green;
+  margin-top: 1.5%;
+  display: block;
+}
+
 .right form small {
   display: none;
 }
@@ -106,6 +122,9 @@ button.ativado {
 }
 
 .right form label.error input {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 
+.right form label.correct .form-input {
+  border: 2px solid green;
+}
